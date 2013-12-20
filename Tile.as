@@ -15,36 +15,36 @@ package
 		[Embed(source = "../lib/hit.png")] public static const HITTILE:Class;
 		[Embed(source = "../lib/miss.png")]	public static const MISSTILE:Class;
 		[Embed(source = "../lib/water.png")] public static const WATERTILE:Class;
+		public static var checkIfShip:Boolean = false;
 		
-		
+		//This function creates generell setings fot the tile that is used in the mapCreator function in the main class.
 		public function Tile(i:int, j:int){
 			
 			var water:Bitmap = new WATERTILE();
 			this.addChild(water);
 			this.buttonMode = true;
+			this.checkIfShip = false;
 			this.x = 100 + j * (this.width +5);
 			this.y = 100 + i * (this.height +5);
-			this.addEventListener(MouseEvent.CLICK, tileClick);
-			
-			
+			this.addEventListener(MouseEvent.CLICK, tileClick);		
 		}
-		
+		//The functoin is there to handle what happens if you click on the tile on the map.
+		//Also to handle which of the tiles that are clicked and checks if it is a ship or just water.
 		public function tileClick(e:MouseEvent):void{
 			if (this.buttonMode == true) {
-				if (  Main.checkIfShip == false) {
+				if ( checkIfShip == false) {
 					
-				
 				var miss:Bitmap = new MISSTILE();
 				addChild(miss);
 				Main.missScore += 1;	
 				Main.mScoreText.text = "Misses: " + String(Main.missScore); 
 				this.buttonMode = false;
 				}
-				else if (Main.checkIfShip == true) {
+				else if (checkIfShip == true) {
 					var hit:Bitmap = new HITTILE();
 					addChild(hit);
 					Main.hitScore += 1;
-					Main.hScoreText.text = "Hits: " + String(Main.missScore);
+					Main.hScoreText.text = "Hits: " + String(Main.hitScore);
 					this.buttonMode = false;
 				}
 			}
