@@ -15,7 +15,7 @@ package
 		[Embed(source = "../lib/hit.png")] public static const HITTILE:Class;
 		[Embed(source = "../lib/miss.png")]	public static const MISSTILE:Class;
 		[Embed(source = "../lib/water.png")] public static const WATERTILE:Class;
-		public static var checkIfShip:Boolean = false;
+		public var checkIfShip:Boolean = false;
 		
 		//This function creates generell setings fot the tile that is used in the mapCreator function in the main class.
 		public function Tile(i:int, j:int){
